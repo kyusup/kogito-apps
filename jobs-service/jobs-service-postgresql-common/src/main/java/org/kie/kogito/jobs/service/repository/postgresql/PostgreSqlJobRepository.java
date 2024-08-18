@@ -24,10 +24,6 @@ import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
-import mutiny.zero.flow.adapters.AdaptersToReactiveStreams;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 import org.kie.kogito.jobs.service.model.JobDetails;
@@ -47,6 +43,10 @@ import io.vertx.mutiny.pgclient.PgPool;
 import io.vertx.mutiny.sqlclient.Row;
 import io.vertx.mutiny.sqlclient.RowSet;
 import io.vertx.mutiny.sqlclient.Tuple;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import mutiny.zero.flow.adapters.AdaptersToReactiveStreams;
 
 import static java.util.stream.Collectors.toList;
 import static org.kie.kogito.jobs.service.utils.DateUtil.DEFAULT_ZONE;
@@ -140,19 +140,19 @@ public class PostgreSqlJobRepository extends BaseReactiveJobRepository implement
         String statusQuery = createStatusQuery(status);
         String query = " WHERE " + statusQuery;
         return ReactiveStreams.fromPublisher(
-            AdaptersToReactiveStreams.publisher(
-                client.preparedQuery("SELECT " + JOB_DETAILS_COLUMNS + " FROM " + JOB_DETAILS_TABLE + query + " ORDER BY priority DESC LIMIT $1").execute(Tuple.of(MAX_ITEMS_QUERY))
-                        .onItem().transformToMulti(rowSet -> Multi.createFrom().iterable(rowSet))
-                        .onItem().transform(this::from)));
+                AdaptersToReactiveStreams.publisher(
+                        client.preparedQuery("SELECT " + JOB_DETAILS_COLUMNS + " FROM " + JOB_DETAILS_TABLE + query + " ORDER BY priority DESC LIMIT $1").execute(Tuple.of(MAX_ITEMS_QUERY))
+                                .onItem().transformToMulti(rowSet -> Multi.createFrom().iterable(rowSet))
+                                .onItem().transform(this::from)));
     }
 
     @Override
     public PublisherBuilder<JobDetails> findAll() {
         return ReactiveStreams.fromPublisher(
-            AdaptersToReactiveStreams.publisher(
-                client.preparedQuery("SELECT " + JOB_DETAILS_COLUMNS + " FROM " + JOB_DETAILS_TABLE + " LIMIT $1").execute(Tuple.of(MAX_ITEMS_QUERY))
-                        .onItem().transformToMulti(rowSet -> Multi.createFrom().iterable(rowSet))
-                        .onItem().transform(this::from)));
+                AdaptersToReactiveStreams.publisher(
+                        client.preparedQuery("SELECT " + JOB_DETAILS_COLUMNS + " FROM " + JOB_DETAILS_TABLE + " LIMIT $1").execute(Tuple.of(MAX_ITEMS_QUERY))
+                                .onItem().transformToMulti(rowSet -> Multi.createFrom().iterable(rowSet))
+                                .onItem().transform(this::from)));
     }
 
     @Override
@@ -162,11 +162,11 @@ public class PostgreSqlJobRepository extends BaseReactiveJobRepository implement
         String query = " WHERE " + statusQuery + " AND " + timeQuery;
 
         return ReactiveStreams.fromPublisher(
-            AdaptersToReactiveStreams.publisher(
-                client.preparedQuery("SELECT " + JOB_DETAILS_COLUMNS + " FROM " + JOB_DETAILS_TABLE + query + " ORDER BY priority DESC LIMIT $1")
-                        .execute(Tuple.of(MAX_ITEMS_QUERY, from.toOffsetDateTime(), to.toOffsetDateTime()))
-                        .onItem().transformToMulti(rowSet -> Multi.createFrom().iterable(rowSet))
-                        .onItem().transform(this::from)));
+                AdaptersToReactiveStreams.publisher(
+                        client.preparedQuery("SELECT " + JOB_DETAILS_COLUMNS + " FROM " + JOB_DETAILS_TABLE + query + " ORDER BY priority DESC LIMIT $1")
+                                .execute(Tuple.of(MAX_ITEMS_QUERY, from.toOffsetDateTime(), to.toOffsetDateTime()))
+                                .onItem().transformToMulti(rowSet -> Multi.createFrom().iterable(rowSet))
+                                .onItem().transform(this::from)));
     }
 
     static String createStatusQuery(JobStatus... status) {

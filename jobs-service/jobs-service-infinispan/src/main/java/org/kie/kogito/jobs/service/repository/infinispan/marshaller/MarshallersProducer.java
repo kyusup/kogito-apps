@@ -15,11 +15,11 @@
  */
 package org.kie.kogito.jobs.service.repository.infinispan.marshaller;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Produces;
-
 import org.infinispan.protostream.MessageMarshaller;
 import org.kie.kogito.jobs.service.repository.marshaller.RecipientMarshaller;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
 @ApplicationScoped
 public class MarshallersProducer {

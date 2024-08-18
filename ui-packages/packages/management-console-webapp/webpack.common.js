@@ -1,4 +1,3 @@
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -12,9 +11,9 @@ module.exports = {
   devServer: {
     client: {
       overlay: {
-        runtimeErrors: false,
-      },
-    },
+        runtimeErrors: false
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -23,7 +22,7 @@ module.exports = {
       chunks: ['app']
     }),
     new webpack.EnvironmentPlugin({
-      KOGITO_APP_VERSION: 'DEV',
+      KOGITO_APP_VERSION: '2.44.1-SNAPSHOT',
       KOGITO_APP_NAME: 'Management Console'
     })
   ],
@@ -31,9 +30,7 @@ module.exports = {
     rules: [
       {
         test: /\.(tsx|ts)?$/,
-        include: [
-          path.resolve(__dirname, 'src')
-        ],
+        include: [path.resolve(__dirname, 'src')],
         use: [
           {
             loader: 'ts-loader',
@@ -58,7 +55,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: input => input.indexOf('background-filter.svg') > 1,
+        include: (input) => input.indexOf('background-filter.svg') > 1,
         use: [
           {
             loader: 'url-loader',
@@ -72,7 +69,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: input => input.indexOf(BG_IMAGES_DIRNAME) > -1,
+        include: (input) => input.indexOf(BG_IMAGES_DIRNAME) > -1,
         use: {
           loader: 'svg-url-loader',
           options: {}

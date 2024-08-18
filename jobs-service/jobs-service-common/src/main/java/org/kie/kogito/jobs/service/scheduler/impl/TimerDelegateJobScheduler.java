@@ -19,9 +19,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Acknowledgment;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
@@ -42,6 +39,9 @@ import org.kie.kogito.timer.Trigger;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 /**
  * Job Scheduler based on Vert.x engine.

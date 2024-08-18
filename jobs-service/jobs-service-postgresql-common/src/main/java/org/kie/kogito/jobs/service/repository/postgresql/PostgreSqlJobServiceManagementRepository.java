@@ -20,9 +20,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
 import org.kie.kogito.jobs.service.model.JobServiceManagementInfo;
 import org.kie.kogito.jobs.service.repository.JobServiceManagementRepository;
 import org.slf4j.Logger;
@@ -34,6 +31,9 @@ import io.vertx.mutiny.sqlclient.Row;
 import io.vertx.mutiny.sqlclient.RowSet;
 import io.vertx.mutiny.sqlclient.SqlClient;
 import io.vertx.mutiny.sqlclient.Tuple;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class PostgreSqlJobServiceManagementRepository implements JobServiceManagementRepository {

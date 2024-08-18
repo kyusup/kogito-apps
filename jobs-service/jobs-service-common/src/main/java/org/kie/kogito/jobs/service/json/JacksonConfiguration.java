@@ -15,9 +15,6 @@
  */
 package org.kie.kogito.jobs.service.json;
 
-import jakarta.enterprise.inject.Produces;
-import jakarta.inject.Singleton;
-
 import org.kie.kogito.jobs.service.api.serlialization.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +25,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import io.cloudevents.jackson.JsonFormat;
 import io.quarkus.jackson.ObjectMapperCustomizer;
+
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Singleton;
 
 public class JacksonConfiguration {
 

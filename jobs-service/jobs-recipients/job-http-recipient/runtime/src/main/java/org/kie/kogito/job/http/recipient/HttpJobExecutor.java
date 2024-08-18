@@ -15,10 +15,6 @@
  */
 package org.kie.kogito.job.http.recipient;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
-import jakarta.annotation.PostConstruct;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.kie.kogito.job.recipient.common.http.HTTPRequest;
 import org.kie.kogito.job.recipient.common.http.HTTPRequestExecutor;
@@ -29,6 +25,10 @@ import org.kie.kogito.jobs.service.model.JobDetails;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.vertx.mutiny.core.Vertx;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class HttpJobExecutor extends HTTPRequestExecutor<HttpRecipient<?>> implements JobExecutor {

@@ -15,9 +15,9 @@
  */
 package org.kie.kogito.jobs.service.resource.error;
 
-import jakarta.ws.rs.ext.Provider;
-
 import org.kie.kogito.jobs.service.exception.InvalidScheduleTimeException;
+
+import jakarta.ws.rs.ext.Provider;
 
 @Provider
 public class InvalidScheduleTimeExceptionMapper extends BaseExceptionMapper<InvalidScheduleTimeException> {

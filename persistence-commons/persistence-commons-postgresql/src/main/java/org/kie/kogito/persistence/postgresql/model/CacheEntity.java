@@ -18,6 +18,11 @@ package org.kie.kogito.persistence.postgresql.model;
 
 import java.util.Objects;
 
+import org.hibernate.annotations.Type;
+import org.kie.kogito.persistence.postgresql.hibernate.JsonBinaryType;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -25,11 +30,6 @@ import jakarta.persistence.IdClass;
 import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.Type;
-import org.kie.kogito.persistence.postgresql.hibernate.JsonBinaryType;
-
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Entity
 @IdClass(CacheId.class)

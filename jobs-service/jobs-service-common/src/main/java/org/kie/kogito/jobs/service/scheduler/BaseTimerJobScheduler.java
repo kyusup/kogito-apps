@@ -26,7 +26,6 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
-import mutiny.zero.flow.adapters.AdaptersToFlow;
 import org.apache.commons.lang3.tuple.Pair;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
@@ -46,6 +45,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.smallrye.mutiny.Uni;
+
+import mutiny.zero.flow.adapters.AdaptersToFlow;
 
 /**
  * Base reactive Job Scheduler that performs the fundamental operations and let to the concrete classes to

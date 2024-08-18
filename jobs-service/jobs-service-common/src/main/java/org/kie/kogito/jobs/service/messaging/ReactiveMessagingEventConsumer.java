@@ -17,7 +17,6 @@ package org.kie.kogito.jobs.service.messaging;
 
 import java.util.Objects;
 
-import mutiny.zero.flow.adapters.AdaptersToFlow;
 import org.eclipse.microprofile.reactive.messaging.Message;
 import org.kie.kogito.jobs.service.exception.JobServiceException;
 import org.kie.kogito.jobs.service.model.JobDetails;
@@ -29,6 +28,8 @@ import org.slf4j.LoggerFactory;
 
 import io.cloudevents.CloudEvent;
 import io.smallrye.mutiny.Uni;
+
+import mutiny.zero.flow.adapters.AdaptersToFlow;
 
 public abstract class ReactiveMessagingEventConsumer {
 

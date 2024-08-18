@@ -41,7 +41,7 @@ export const getUpdateTokenValidity = (): number => {
 };
 
 let currentSecurityContext: UserContext;
-let keycloak: Keycloak.KeycloakInstance;
+// let keycloak: Keycloak.KeycloakInstance;
 export const getLoadedSecurityContext = (): UserContext => {
   /* istanbul ignore if */
   if (!currentSecurityContext) {
@@ -71,25 +71,32 @@ export const checkAuthServerHealth = () => {
   });
 };
 
-export const getKeycloakClient = (): Keycloak.KeycloakInstance => {
-  return Keycloak({
-    realm: window['KOGITO_CONSOLES_KEYCLOAK_REALM'],
-    url: window['KOGITO_CONSOLES_KEYCLOAK_URL'],
-    clientId: window['KOGITO_CONSOLES_KEYCLOAK_CLIENT_ID']
-  });
+// Initialize Keycloak instance with your configuration
+const keycloakConfig = {
+  realm: window['KOGITO_CONSOLES_KEYCLOAK_REALM'],
+  url: window['KOGITO_CONSOLES_KEYCLOAK_URL'],
+  clientId: window['KOGITO_CONSOLES_KEYCLOAK_CLIENT_ID'] // Replace with your client ID
 };
+
+const keycloak = new Keycloak(keycloakConfig);
 
 export const initializeKeycloak = (
   onloadSuccess: () => void
 ): Promise<void> => {
-  keycloak = getKeycloakClient();
   return keycloak
     .init({
-      onLoad: 'login-required'
+      onLoad: 'check-sso',
+      pkceMethod: 'S256'
     })
     .then((authenticated) => {
       /* istanbul ignore else */
       if (authenticated) {
+        console.log('Authenticated');
+        // You can now access Keycloak tokens
+        console.log('Access Token:', keycloak.token);
+        console.log('ID Token:', keycloak.idToken);
+        console.log('Refresh Token:', keycloak.refreshToken);
+
         currentSecurityContext = new KeycloakUserContext({
           userName: keycloak.tokenParsed['preferred_username'],
           roles: keycloak.tokenParsed['groups'],
@@ -98,7 +105,12 @@ export const initializeKeycloak = (
           logout: () => handleLogout()
         });
         onloadSuccess();
+      } else {
+        console.warn('Not authenticated, kur');
       }
+    })
+    .catch((error) => {
+      console.error('Failed to initialize Keycloak, kurx', error);
     });
 };
 

@@ -19,12 +19,6 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
-import jakarta.interceptor.Interceptor;
-
-import jakarta.annotation.Priority;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.kie.kogito.jobs.service.management.MessagingChangeEvent;
@@ -39,6 +33,12 @@ import org.slf4j.LoggerFactory;
 
 import io.quarkus.runtime.StartupEvent;
 import io.vertx.mutiny.core.Vertx;
+
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptor;
 
 @ApplicationScoped
 public class JobSchedulerManager {

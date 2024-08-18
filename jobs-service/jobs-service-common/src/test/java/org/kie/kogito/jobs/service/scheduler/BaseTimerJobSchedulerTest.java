@@ -25,7 +25,6 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
-import mutiny.zero.flow.adapters.AdaptersToFlow;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,6 +47,8 @@ import org.reactivestreams.Publisher;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
+
+import mutiny.zero.flow.adapters.AdaptersToFlow;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

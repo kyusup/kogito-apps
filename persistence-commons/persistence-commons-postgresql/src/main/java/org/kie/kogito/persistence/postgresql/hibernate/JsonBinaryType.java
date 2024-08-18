@@ -31,6 +31,7 @@ import org.hibernate.usertype.UserType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import static java.lang.String.format;
 
 public class JsonBinaryType implements UserType<JsonNode> {

@@ -19,11 +19,6 @@ package org.kie.kogito.jobs.service.repository.mongodb;
 import java.time.ZonedDateTime;
 import java.util.concurrent.CompletionStage;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
-
-import mutiny.zero.flow.adapters.AdaptersToReactiveStreams;
 import org.bson.Document;
 import org.bson.json.JsonWriterSettings;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -44,6 +39,11 @@ import io.quarkus.runtime.StartupEvent;
 import io.smallrye.mutiny.infrastructure.Infrastructure;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
+import mutiny.zero.flow.adapters.AdaptersToReactiveStreams;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -157,15 +157,15 @@ public class MongoDBJobRepository extends BaseReactiveJobRepository implements R
     public PublisherBuilder<JobDetails> findByStatusBetweenDatesOrderByPriority(ZonedDateTime from, ZonedDateTime to, JobStatus... status) {
         return fromPublisher(
                 AdaptersToReactiveStreams.publisher(
-                collection.find(
-                        and(
-                                in(STATUS_COLUMN, stream(status).map(Enum::name).collect(toList())),
-                                gt(FIRE_TIME_COLUMN, from.toInstant().toEpochMilli()),
-                                lt(FIRE_TIME_COLUMN, to.toInstant().toEpochMilli())),
-                        new FindOptions().sort(descending("priority")))
-                        .map(MongoDBJobRepository::documentToJson)
-                        .map(jobDetailsMarshaller::unmarshall)
-                        .emitOn(Infrastructure.getDefaultExecutor())));
+                        collection.find(
+                                and(
+                                        in(STATUS_COLUMN, stream(status).map(Enum::name).collect(toList())),
+                                        gt(FIRE_TIME_COLUMN, from.toInstant().toEpochMilli()),
+                                        lt(FIRE_TIME_COLUMN, to.toInstant().toEpochMilli())),
+                                new FindOptions().sort(descending("priority")))
+                                .map(MongoDBJobRepository::documentToJson)
+                                .map(jobDetailsMarshaller::unmarshall)
+                                .emitOn(Infrastructure.getDefaultExecutor())));
     }
 
     static JsonObject documentToJson(Document document) {

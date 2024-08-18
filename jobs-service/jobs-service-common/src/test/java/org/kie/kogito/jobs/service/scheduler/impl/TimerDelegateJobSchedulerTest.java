@@ -18,7 +18,6 @@ package org.kie.kogito.jobs.service.scheduler.impl;
 import java.util.Optional;
 import java.util.UUID;
 
-import mutiny.zero.flow.adapters.AdaptersToFlow;
 import org.eclipse.microprofile.reactive.streams.operators.PublisherBuilder;
 import org.eclipse.microprofile.reactive.streams.operators.ReactiveStreams;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,6 +41,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.reactivestreams.Publisher;
 
 import io.smallrye.mutiny.Multi;
+
+import mutiny.zero.flow.adapters.AdaptersToFlow;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
