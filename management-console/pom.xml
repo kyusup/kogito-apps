@@ -34,6 +34,10 @@
           <artifactId>vertx-web</artifactId>
           <groupId>io.vertx</groupId>
         </exclusion>
+        <exclusion>
+          <artifactId>quarkus-vertx-http</artifactId>
+          <groupId>io.quarkus</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -70,6 +74,11 @@
       <artifactId>netty-handler</artifactId>
       <groupId>io.netty</groupId>
       <version>4.1.94.Final</version>
+    </dependency>
+    <dependency>
+      <artifactId>quarkus-vertx-http</artifactId>
+      <groupId>io.quarkus</groupId>
+      <version>3.13.2</version>
     </dependency>
 
     <!-- Health Check -->
