@@ -18,10 +18,6 @@ package org.kie.kogito.index.infinispan.schema;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
-
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.commons.configuration.XMLStringConfiguration;
 import org.infinispan.query.remote.client.ProtobufMetadataManagerConstants;
@@ -36,6 +32,10 @@ import org.slf4j.LoggerFactory;
 
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
 
 import static java.util.Collections.emptyList;
 

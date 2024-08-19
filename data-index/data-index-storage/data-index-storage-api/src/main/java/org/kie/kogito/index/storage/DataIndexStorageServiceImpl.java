@@ -16,9 +16,6 @@
 
 package org.kie.kogito.index.storage;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
 import org.kie.kogito.index.model.Job;
 import org.kie.kogito.index.model.ProcessDefinition;
 import org.kie.kogito.index.model.ProcessInstance;
@@ -27,6 +24,9 @@ import org.kie.kogito.persistence.api.Storage;
 import org.kie.kogito.persistence.api.StorageService;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import static org.kie.kogito.index.storage.Constants.JOBS_STORAGE;
 import static org.kie.kogito.index.storage.Constants.PROCESS_DEFINITIONS_STORAGE;

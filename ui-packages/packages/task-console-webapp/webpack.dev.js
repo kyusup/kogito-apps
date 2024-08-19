@@ -23,7 +23,9 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || '9000';
 
 module.exports = function (env) {
-  const dataIndexURL = env?.KOGITO_DATAINDEX_HTTP_URL ?? 'http://localhost:4000/graphql';
+  const dataIndexURL =
+    env?.KOGITO_DATAINDEX_HTTP_URL ??
+    'https://kogito-data-index.life-care.ysp/graphql';
   return merge(common, {
     mode: 'development',
     devtool: 'source-map',
@@ -43,12 +45,14 @@ module.exports = function (env) {
           errors: true
         },
         progress: true
-      },
+      }
     },
-    plugins: [new webpack.EnvironmentPlugin({
-      KOGITO_ENV_MODE: 'DEV',
-      KOGITO_DATAINDEX_HTTP_URL: dataIndexURL
-    })],
+    plugins: [
+      new webpack.EnvironmentPlugin({
+        KOGITO_ENV_MODE: 'DEV',
+        KOGITO_DATAINDEX_HTTP_URL: dataIndexURL
+      })
+    ],
     module: {
       rules: [
         {
@@ -59,10 +63,7 @@ module.exports = function (env) {
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.jsx'],
-      modules: [
-        path.resolve('node_modules'),
-        path.resolve(__dirname, 'src')
-      ]
+      modules: [path.resolve('node_modules'), path.resolve(__dirname, 'src')]
     }
-  })
-}
+  });
+};

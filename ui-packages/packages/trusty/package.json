@@ -47,7 +47,7 @@
     "update-snapshot": "jest --updateSnapshot",
     "test:watch": "jest --watch",
     "clean": "rimraf dist",
-    "lint": "eslint './src/**/*.ts{,x}'",
+    "lint": "eslint \"./src/**/*.ts{,x}\"",
     "mock-server": "json-server api-mock/db.js --routes api-mock/routes.json --port 1336 --delay 1000 --id executionId --middlewares api-mock/filterSingular.js  api-mock/counterfactualPoll.js",
     "start:it": "concurrently 'pnpm serve -p 9000 -c ../cypress/serve.json ./dist-standalone/' 'pnpm run mock-server'",
     "cypress:open:it": "pnpm cypress open --project cypress --config-file cypress.it.ts",

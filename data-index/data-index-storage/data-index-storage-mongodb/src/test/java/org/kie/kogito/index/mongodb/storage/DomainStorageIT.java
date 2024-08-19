@@ -18,8 +18,6 @@ package org.kie.kogito.index.mongodb.storage;
 
 import java.util.UUID;
 
-import jakarta.inject.Inject;
-
 import org.bson.Document;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,6 +33,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
+
+import jakarta.inject.Inject;
 
 @QuarkusTest
 @QuarkusTestResource(MongoDBQuarkusTestResource.class)

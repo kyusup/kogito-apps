@@ -23,7 +23,7 @@
     "test": "jest --runInBand --ci --reporters=default --reporters=jest-junit",
     "update-snapshot": "jest --updateSnapshot",
     "test:coverage": "rimraf coverage && pnpm run test --coverage",
-    "lint": "eslint './src/**/*.ts{,x}' --fix",
+    "lint": "eslint \"./src/**/*.ts{,x}\" --fix",
     "format": "prettier --config ../../.prettierrc --check --write './src/**/*.{tsx,ts,js}'",
     "clean": "rimraf dist"
   },

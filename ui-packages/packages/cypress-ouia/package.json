@@ -23,7 +23,7 @@
     "precommit": "lint-staged",
     "build": "tsc --project ./tsconfig.json || echo error",
     "build:prod": "pnpm run clean && pnpm run lint && pnpm run build",
-    "lint": "eslint './src/**/*.ts{,x}'",
+    "lint": "eslint \"./src/**/*.ts{,x}\"",
     "format": "prettier --config ../../.prettierrc --check --write './src/**/*.{tsx,ts,js}'",
     "clean": "rimraf dist"
   },
@@ -32,5 +32,8 @@
       "pnpm run format",
       "pnpm run lint"
     ]
+  },
+  "dependencies": {
+    "@kogito-apps/cypress-ouia": "file:"
   }
 }

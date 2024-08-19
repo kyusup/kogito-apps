@@ -18,8 +18,6 @@ package org.kie.kogito.index.mongodb.storage;
 
 import java.util.Set;
 
-import jakarta.inject.Inject;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,6 +32,8 @@ import org.kie.kogito.testcontainers.quarkus.MongoDBQuarkusTestResource;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
+
+import jakarta.inject.Inject;
 
 import static org.kie.kogito.index.storage.Constants.PROCESS_DEFINITIONS_STORAGE;
 

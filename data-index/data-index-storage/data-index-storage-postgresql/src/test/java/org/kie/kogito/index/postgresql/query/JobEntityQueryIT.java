@@ -16,8 +16,6 @@
 
 package org.kie.kogito.index.postgresql.query;
 
-import jakarta.inject.Inject;
-
 import org.kie.kogito.index.model.Job;
 import org.kie.kogito.index.postgresql.storage.JobEntityStorage;
 import org.kie.kogito.index.test.query.AbstractJobQueryIT;
@@ -26,6 +24,8 @@ import org.kie.kogito.testcontainers.quarkus.PostgreSqlQuarkusTestResource;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
+
+import jakarta.inject.Inject;
 
 @QuarkusTest
 @QuarkusTestResource(PostgreSqlQuarkusTestResource.class)

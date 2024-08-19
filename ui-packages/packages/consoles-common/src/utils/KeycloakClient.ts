@@ -85,18 +85,11 @@ export const initializeKeycloak = (
 ): Promise<void> => {
   return keycloak
     .init({
-      onLoad: 'check-sso',
-      pkceMethod: 'S256'
+      onLoad: 'login-required'
     })
     .then((authenticated) => {
       /* istanbul ignore else */
       if (authenticated) {
-        console.log('Authenticated');
-        // You can now access Keycloak tokens
-        console.log('Access Token:', keycloak.token);
-        console.log('ID Token:', keycloak.idToken);
-        console.log('Refresh Token:', keycloak.refreshToken);
-
         currentSecurityContext = new KeycloakUserContext({
           userName: keycloak.tokenParsed['preferred_username'],
           roles: keycloak.tokenParsed['groups'],
@@ -106,7 +99,7 @@ export const initializeKeycloak = (
         });
         onloadSuccess();
       } else {
-        console.warn('Not authenticated, kur');
+        console.warn('Not authenticated, kurx');
       }
     })
     .catch((error) => {

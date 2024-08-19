@@ -18,10 +18,6 @@ package org.kie.kogito.index.oracle.storage;
 
 import java.util.Optional;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
-
 import org.kie.kogito.index.model.ProcessDefinition;
 import org.kie.kogito.index.oracle.mapper.ProcessDefinitionEntityMapper;
 import org.kie.kogito.index.oracle.model.ProcessDefinitionEntity;
@@ -29,6 +25,10 @@ import org.kie.kogito.index.oracle.model.ProcessDefinitionEntityId;
 import org.kie.kogito.index.oracle.model.ProcessDefinitionEntityRepository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 
 @ApplicationScoped
 public class ProcessDefinitionEntityStorage extends AbstractStorage<ProcessDefinitionEntity, ProcessDefinition> {

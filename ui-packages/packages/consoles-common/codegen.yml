@@ -1,22 +1,22 @@
 overwrite: true
-schema: "http://localhost:8180/graphql"
+schema: 'https://kogito-data-index.life-care.ysp/graphql'
 documents: './src/graphql/queries.tsx'
 generates:
   ./src/graphql/types.tsx:
     plugins:
       - add:
           content:
-          - '/* eslint-disable */'
+            - '/* eslint-disable */'
       - add:
           content:
-          - ''
-          - 'export namespace GraphQL {'
+            - ''
+            - 'export namespace GraphQL {'
       - add:
           placement: 'append'
           content: '}'
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-react-apollo"
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
     config:
       withHOC: false
       withHooks: true
@@ -26,4 +26,4 @@ generates:
       gqlImport: graphql-tag
   ./src/graphql/graphql.schema.json:
     plugins:
-      - "introspection"
+      - 'introspection'

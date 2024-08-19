@@ -19,14 +19,14 @@ package org.kie.kogito.index.postgresql.storage;
 import java.util.Map;
 import java.util.function.Function;
 
-import jakarta.transaction.Transactional;
-
 import org.kie.kogito.index.postgresql.model.AbstractEntity;
 import org.kie.kogito.persistence.api.Storage;
 import org.kie.kogito.persistence.api.query.Query;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.smallrye.mutiny.Multi;
+
+import jakarta.transaction.Transactional;
 
 import static java.util.stream.Collectors.toMap;
 

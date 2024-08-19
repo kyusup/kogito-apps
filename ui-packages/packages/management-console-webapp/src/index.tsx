@@ -44,6 +44,8 @@ const appRender = async (ctx: UserContext) => {
     uri:
       window['DATA_INDEX_ENDPOINT'] || process.env['KOGITO_DATAINDEX_HTTP_URL']
   });
+  console.log(window['DATA_INDEX_ENDPOINT']);
+  console.log(process.env['KOGITO_DATAINDEX_HTTP_URL']);
   const fallbackUI = onError(({ networkError }: any) => {
     if (networkError && networkError.stack === 'TypeError: Failed to fetch') {
       // eslint-disable-next-line react/no-render-return-value

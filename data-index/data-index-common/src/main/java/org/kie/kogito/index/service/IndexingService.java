@@ -17,9 +17,6 @@ package org.kie.kogito.index.service;
 
 import java.util.List;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-
 import org.kie.kogito.index.model.Job;
 import org.kie.kogito.index.model.NodeInstance;
 import org.kie.kogito.index.model.ProcessDefinition;
@@ -33,6 +30,9 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import static java.util.stream.Collectors.toList;
 import static org.kie.kogito.index.json.JsonUtils.getObjectMapper;

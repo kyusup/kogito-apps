@@ -20,11 +20,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Event;
-import jakarta.inject.Inject;
-
-import jakarta.annotation.PostConstruct;
 import org.kie.kogito.index.model.Job;
 import org.kie.kogito.index.model.ProcessDefinition;
 import org.kie.kogito.index.model.ProcessInstance;
@@ -38,6 +33,11 @@ import org.kie.kogito.index.mongodb.model.UserTaskInstanceEntityMapper;
 import org.kie.kogito.persistence.mongodb.index.IndexCreateOrUpdateEvent;
 import org.kie.kogito.persistence.mongodb.model.MongoEntityMapper;
 import org.kie.kogito.persistence.mongodb.storage.MongoModelService;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Event;
+import jakarta.inject.Inject;
 
 import static org.kie.kogito.index.mongodb.Constants.isDomainCollection;
 import static org.kie.kogito.index.storage.Constants.JOBS_STORAGE;

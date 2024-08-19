@@ -18,14 +18,14 @@ package org.kie.kogito.index.oracle.mapper;
 
 import java.util.Set;
 
-import jakarta.inject.Inject;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.kie.kogito.index.model.ProcessDefinition;
 import org.kie.kogito.index.oracle.model.ProcessDefinitionEntity;
 
 import io.quarkus.test.junit.QuarkusTest;
+
+import jakarta.inject.Inject;
 
 import static java.util.Collections.singleton;
 import static org.assertj.core.api.Assertions.assertThat;
