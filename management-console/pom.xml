@@ -78,8 +78,11 @@
     <dependency>
       <artifactId>quarkus-vertx-http</artifactId>
       <groupId>io.quarkus</groupId>
-      <version>3.13.2</version>
+      <version>3.2.6.Final</version>
     </dependency>
+
+
+
 
     <!-- Health Check -->
     <dependency>
