@@ -19,8 +19,26 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-process-svg</artifactId>    
+    </dependency>
+    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-reactive-routes</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>quarkus-vertx</artifactId>
+          <groupId>io.quarkus</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>vertx-web</artifactId>
+          <groupId>io.vertx</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>quarkus-vertx-http</artifactId>
+          <groupId>io.quarkus</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -29,6 +47,38 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-qute</artifactId>
+    </dependency>
+    <dependency>
+      <artifactId>quarkus-vertx</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>netty-handler</artifactId>
+          <groupId>io.netty</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>io.quarkus</groupId>
+      <version>3.2.6.Final</version>
+    </dependency>
+    <dependency>
+      <artifactId>vertx-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>netty-handler</artifactId>
+          <groupId>io.netty</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>io.vertx</groupId>
+      <version>4.3.8</version>
+    </dependency>
+    <dependency>
+      <artifactId>netty-handler</artifactId>
+      <groupId>io.netty</groupId>
+      <version>4.1.94.Final</version>
+    </dependency>
+    <dependency>
+      <artifactId>quarkus-vertx-http</artifactId>
+      <groupId>io.quarkus</groupId>
+      <version>3.2.6.Final</version>
     </dependency>
 
     <!-- Health Check -->
